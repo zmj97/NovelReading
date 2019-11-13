@@ -13,7 +13,7 @@ NovelReading(
     color: , // setting background color
     textStyle: , // setting text style
     builder: (page) async {
-        return await http.get('example.com&page=$page');
+        return await http.get('example.com?page=$page');
     },
 )
 

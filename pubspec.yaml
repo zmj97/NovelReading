@@ -1,8 +1,8 @@
 name: novel_reading
 description: A new Flutter package project.
 version: 0.0.1
-author:
-homepage:
+author: zmj97 <295692590@qq.com>
+homepage: https://github.com/zmj97/NovelReading
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
