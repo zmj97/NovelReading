@@ -51,7 +51,7 @@ class _NovelReadingState extends State<NovelReading> {
 
   int currentPage;
 
-  bool _showLoading = false;
+  bool _isRequesting = false;
 
   String _novel = '';
 
@@ -64,7 +64,7 @@ class _NovelReadingState extends State<NovelReading> {
 
     _controller = new ScrollController()
       ..addListener(() {
-      if (_controller.position.pixels == _controller.position.maxScrollExtent) {
+      if (!_isRequesting && _controller.position.pixels == _controller.position.maxScrollExtent) {
         currentPage += cache + 1;
         _loadMore(currentPage, cache);
       }});
@@ -72,14 +72,21 @@ class _NovelReadingState extends State<NovelReading> {
 
   void _loadMore(int from, int cache) async {
     setState(() {
-      _showLoading = true;
+      _isRequesting = true;
     });
-    for (int i = from; i <= from + cache; i++) {
-      _novel += (await builder(i));
-    }
+    _novel += (await builder(from));
     setState(() {
-      _showLoading = false;
+      _novel = _novel;
     });
+    setState(() {
+      _isRequesting = false;
+    });
+    for (int i = from + 1; i <= from + cache; i++) {
+      _novel += (await builder(i));
+      setState(() {
+        _novel = _novel;
+      });
+    }
   }
   
   void _initNovel() async {
@@ -130,15 +137,25 @@ class _NovelReadingState extends State<NovelReading> {
           height: MediaQuery.of(context).size.height,
           color: _getBgcolor(),
           padding: EdgeInsets.only(top: 12, left: 12, right: 12),
-          child: SingleChildScrollView(
-            child: Text(_novel, style: _getTextStyle(),),
-            controller: _controller,
+          child: Scrollbar(
+            child: SingleChildScrollView(
+              child: Text(_novel, style: _getTextStyle(),),
+              controller: _controller,
+            ),
           ),
         ),
         Opacity(
-          opacity: _showLoading ? 1 : 0,
+          opacity: _isRequesting ? 1 : 0,
           child: Center(
-            child: CupertinoActivityIndicator(),
+            child: Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(12)
+              ),
+              child: Center(child: CupertinoActivityIndicator(),),
+            )
           )
         )
       ],
