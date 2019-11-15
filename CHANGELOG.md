@@ -1,3 +1,4 @@
-## [0.0.1] - TODO: Add release date.
+## [0.1.0] - 正式版本 Official version.
 
-* TODO: Describe initial release.
+## [0.0.1] - 实现功能 Realize the function.
+

@@ -12,24 +12,24 @@ enum NovelReadingTheme {
 
 class NovelReading extends StatefulWidget {
 
-  // 从第几页开始
-  // start from which page
+  /// 从第几页开始
+  /// start from which page
   final int start;
 
-  // 预加载页数
-  // how much pages to preload
+  /// 预加载页数
+  /// how much pages to preload
   final int cache;
 
-  // 如何获取第page页的数据，返回字符串
-  // how to get a page's data, return string
+  /// 如何获取第page页的数据，返回字符串
+  /// how to get a page's data, return string
   final Future<String> Function(int page) builder;
 
-  // 字体样式
-  // novel text font style
+  /// 字体样式
+  /// novel text font style
   final TextStyle textStyle;
 
-  // 背景色
-  //background color
+  /// 背景色
+  /// background color
   final Color color;
 
   final NovelReadingTheme theme;
