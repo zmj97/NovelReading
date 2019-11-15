@@ -3,7 +3,7 @@
 一个支持上拉加载更多和缓存的小说阅读Flutter插件。
 A Flutter novel reading package supports pull-up loading more and caching.
 
-<img src="./novel_reading.gif" alt="novel_reading" style="width=400px" />	
+<img src="https://github.com/zmj97/NovelReading/raw/master/novel_reading.gif" alt="novel_reading" width="400" />	
 
 ## How to Use
 

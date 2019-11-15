@@ -1,3 +1,5 @@
+## [0.1.2] - change readme.
+
 ## [0.1.1] - add anti-shake & screencapture.
 
 ## [0.1.0] - 正式版本 Official version.

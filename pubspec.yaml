@@ -1,6 +1,6 @@
 name: novel_reading
 description: A Flutter novel reading package supports pull-up loading more and caching.
-version: 0.1.1
+version: 0.1.2
 author: zmj97 <295692590@qq.com>
 homepage: https://github.com/zmj97/NovelReading
 
